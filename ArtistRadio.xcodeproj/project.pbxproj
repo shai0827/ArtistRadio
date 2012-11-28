@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9252EE3165B67AD0032ECC0 /* RadioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9252EE2165B67AD0032ECC0 /* RadioModel.m */; };
+		A9424444165C6EF000E60295 /* ListUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9424443165C6EF000E60295 /* ListUIWebView.m */; };
 		A98617021657B1C800681F08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617011657B1C800681F08 /* UIKit.framework */; };
 		A98617041657B1C800681F08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617031657B1C800681F08 /* Foundation.framework */; };
 		A98617061657B1C800681F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617051657B1C800681F08 /* CoreGraphics.framework */; };
@@ -16,9 +18,28 @@
 		A98617141657B1C800681F08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A98617131657B1C800681F08 /* Default.png */; };
 		A98617161657B1C800681F08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A98617151657B1C800681F08 /* Default@2x.png */; };
 		A98617181657B1C800681F08 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A98617171657B1C800681F08 /* Default-568h@2x.png */; };
+		A98617231657B28700681F08 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98617221657B28700681F08 /* RadioViewController.m */; };
+		A98617261657B5A300681F08 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A98617251657B5A300681F08 /* Utils.m */; };
+		A98617301657B95E00681F08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A986172F1657B95E00681F08 /* QuartzCore.framework */; };
+		A98617321657B96600681F08 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617311657B96600681F08 /* CFNetwork.framework */; };
+		A98617341657B97800681F08 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617331657B97800681F08 /* MediaPlayer.framework */; };
+		A98617361657B98B00681F08 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A98617351657B98B00681F08 /* AudioToolbox.framework */; };
+		A98617401659FC9400681F08 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = A986171F1657B21F00681F08 /* AudioStreamer.m */; };
+		A986175A165A37AE00681F08 /* PlayerUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9861759165A37AE00681F08 /* PlayerUIView.m */; };
+		D9194D82166600310054A9FC /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D7C166600310054A9FC /* bg.png */; };
+		D9194D83166600310054A9FC /* btn_next_dimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D7D166600310054A9FC /* btn_next_dimmed.png */; };
+		D9194D84166600310054A9FC /* btn_next.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D7E166600310054A9FC /* btn_next.png */; };
+		D9194D85166600310054A9FC /* btn_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D7F166600310054A9FC /* btn_pause.png */; };
+		D9194D86166600310054A9FC /* btn_play_dimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D80166600310054A9FC /* btn_play_dimmed.png */; };
+		D9194D87166600310054A9FC /* btn_play.png in Resources */ = {isa = PBXBuildFile; fileRef = D9194D81166600310054A9FC /* btn_play.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9252EE1165B67AD0032ECC0 /* RadioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioModel.h; sourceTree = "<group>"; };
+		A9252EE2165B67AD0032ECC0 /* RadioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioModel.m; sourceTree = "<group>"; };
+		A9424440165B7E1B00E60295 /* PlayerUIViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerUIViewProtocol.h; sourceTree = "<group>"; };
+		A9424442165C6EEF00E60295 /* ListUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUIWebView.h; sourceTree = "<group>"; };
+		A9424443165C6EF000E60295 /* ListUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUIWebView.m; sourceTree = "<group>"; };
 		A98616FD1657B1C800681F08 /* ArtistRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtistRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98617011657B1C800681F08 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A98617031657B1C800681F08 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,6 +53,24 @@
 		A98617131657B1C800681F08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A98617151657B1C800681F08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A98617171657B1C800681F08 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A986171E1657B21F00681F08 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		A986171F1657B21F00681F08 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		A98617211657B28700681F08 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
+		A98617221657B28700681F08 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		A98617241657B5A300681F08 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		A98617251657B5A300681F08 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		A986172F1657B95E00681F08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A98617311657B96600681F08 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A98617331657B97800681F08 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A98617351657B98B00681F08 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A9861758165A37AD00681F08 /* PlayerUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerUIView.h; sourceTree = "<group>"; };
+		A9861759165A37AE00681F08 /* PlayerUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerUIView.m; sourceTree = "<group>"; };
+		D9194D7C166600310054A9FC /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		D9194D7D166600310054A9FC /* btn_next_dimmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_next_dimmed.png; sourceTree = "<group>"; };
+		D9194D7E166600310054A9FC /* btn_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_next.png; sourceTree = "<group>"; };
+		D9194D7F166600310054A9FC /* btn_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pause.png; sourceTree = "<group>"; };
+		D9194D80166600310054A9FC /* btn_play_dimmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play_dimmed.png; sourceTree = "<group>"; };
+		D9194D81166600310054A9FC /* btn_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_play.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98617361657B98B00681F08 /* AudioToolbox.framework in Frameworks */,
+				A98617341657B97800681F08 /* MediaPlayer.framework in Frameworks */,
+				A98617321657B96600681F08 /* CFNetwork.framework in Frameworks */,
+				A98617301657B95E00681F08 /* QuartzCore.framework in Frameworks */,
 				A98617021657B1C800681F08 /* UIKit.framework in Frameworks */,
 				A98617041657B1C800681F08 /* Foundation.framework in Frameworks */,
 				A98617061657B1C800681F08 /* CoreGraphics.framework in Frameworks */,
@@ -68,6 +111,10 @@
 		A98617001657B1C800681F08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A98617351657B98B00681F08 /* AudioToolbox.framework */,
+				A98617331657B97800681F08 /* MediaPlayer.framework */,
+				A98617311657B96600681F08 /* CFNetwork.framework */,
+				A986172F1657B95E00681F08 /* QuartzCore.framework */,
 				A98617011657B1C800681F08 /* UIKit.framework */,
 				A98617031657B1C800681F08 /* Foundation.framework */,
 				A98617051657B1C800681F08 /* CoreGraphics.framework */,
@@ -78,9 +125,23 @@
 		A98617071657B1C800681F08 /* ArtistRadio */ = {
 			isa = PBXGroup;
 			children = (
+				A98617201657B23F00681F08 /* image */,
+				A986171E1657B21F00681F08 /* AudioStreamer.h */,
+				A986171F1657B21F00681F08 /* AudioStreamer.m */,
 				A98617101657B1C800681F08 /* AppDelegate.h */,
 				A98617111657B1C800681F08 /* AppDelegate.m */,
 				A98617081657B1C800681F08 /* Supporting Files */,
+				A98617211657B28700681F08 /* RadioViewController.h */,
+				A98617221657B28700681F08 /* RadioViewController.m */,
+				A98617241657B5A300681F08 /* Utils.h */,
+				A98617251657B5A300681F08 /* Utils.m */,
+				A9861758165A37AD00681F08 /* PlayerUIView.h */,
+				A9861759165A37AE00681F08 /* PlayerUIView.m */,
+				A9252EE1165B67AD0032ECC0 /* RadioModel.h */,
+				A9252EE2165B67AD0032ECC0 /* RadioModel.m */,
+				A9424440165B7E1B00E60295 /* PlayerUIViewProtocol.h */,
+				A9424442165C6EEF00E60295 /* ListUIWebView.h */,
+				A9424443165C6EF000E60295 /* ListUIWebView.m */,
 			);
 			path = ArtistRadio;
 			sourceTree = "<group>";
@@ -97,6 +158,19 @@
 				A98617171657B1C800681F08 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A98617201657B23F00681F08 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				D9194D7C166600310054A9FC /* bg.png */,
+				D9194D7D166600310054A9FC /* btn_next_dimmed.png */,
+				D9194D7E166600310054A9FC /* btn_next.png */,
+				D9194D7F166600310054A9FC /* btn_pause.png */,
+				D9194D80166600310054A9FC /* btn_play_dimmed.png */,
+				D9194D81166600310054A9FC /* btn_play.png */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +228,12 @@
 				A98617141657B1C800681F08 /* Default.png in Resources */,
 				A98617161657B1C800681F08 /* Default@2x.png in Resources */,
 				A98617181657B1C800681F08 /* Default-568h@2x.png in Resources */,
+				D9194D82166600310054A9FC /* bg.png in Resources */,
+				D9194D83166600310054A9FC /* btn_next_dimmed.png in Resources */,
+				D9194D84166600310054A9FC /* btn_next.png in Resources */,
+				D9194D85166600310054A9FC /* btn_pause.png in Resources */,
+				D9194D86166600310054A9FC /* btn_play_dimmed.png in Resources */,
+				D9194D87166600310054A9FC /* btn_play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +246,12 @@
 			files = (
 				A986170E1657B1C800681F08 /* main.m in Sources */,
 				A98617121657B1C800681F08 /* AppDelegate.m in Sources */,
+				A98617231657B28700681F08 /* RadioViewController.m in Sources */,
+				A98617261657B5A300681F08 /* Utils.m in Sources */,
+				A98617401659FC9400681F08 /* AudioStreamer.m in Sources */,
+				A986175A165A37AE00681F08 /* PlayerUIView.m in Sources */,
+				A9252EE3165B67AD0032ECC0 /* RadioModel.m in Sources */,
+				A9424444165C6EF000E60295 /* ListUIWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +360,7 @@
 				A986171D1657B1C800681F08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
