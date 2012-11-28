@@ -10,8 +10,17 @@
 
 @implementation AppDelegate
 
+@synthesize utils;
+@synthesize radioModel;
+
 - (void)dealloc
 {
+    [self.utils release];
+    self.utils = nil;
+    
+    [self.radioModel release];
+    self.radioModel = nil;
+    
     [_window release];
     [super dealloc];
 }
@@ -19,8 +28,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    self.utils = [[Utils alloc] init];
+    self.radioModel = [[RadioModel alloc] init];
+    
+    //  ViewController 생성 및 초기화
+    RadioViewController *radioViewController = [[RadioViewController alloc] init];
+    //  window > view add
+    [self.window setRootViewController:radioViewController];
+    [radioViewController release];
+    radioViewController = nil;
+    
+    self.window.backgroundColor = [UIColor colorWithRed:48/255.0 green:48/255.0 blue:57/255.0 alpha:1.0];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
