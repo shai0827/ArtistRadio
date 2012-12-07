@@ -10,7 +10,8 @@
 
 @implementation RadioModel
 
-@synthesize currentKey;
+@synthesize playKey;
+@synthesize playInfomation;
 @synthesize playList;
 
 /**
@@ -23,9 +24,12 @@
 @synthesize status;
 
 static NSString *MUSIC_SOURCE_URL = @"http://flashdev.naver.com/FlashUILab/FlashUI1/KimHyeYoung/study/ios/artistRadio/source/";
-static NSString *RADIO_LIST_WEB_URL = @"http://zenadot.dothome.co.kr/radio/";
+//static NSString *RADIO_LIST_WEB_URL = @"http://zenadot.dothome.co.kr/radio/";
+static NSString *RADIO_LIST_WEB_URL = @"http://flashdev.naver.com/FlashUILab/FlashUI1/KimHyeYoung/study/ios/artistRadio/html2/";
 static int PLAYER_HEIGHT = 86;
 static int PADDING = 15;
+static int SHADOW = 8;
+
 
 - (id)init
 {
@@ -49,7 +53,7 @@ static int PADDING = 15;
 
 - (CGRect)getListViewRect:(CGSize)viewSize
 {
-    return CGRectMake(PADDING, PADDING, viewSize.width - (PADDING*2), viewSize.height - PLAYER_HEIGHT - PADDING);
+    return CGRectMake(PADDING+SHADOW, PADDING+SHADOW, viewSize.width - (PADDING*2) - ( SHADOW * 2), viewSize.height - PLAYER_HEIGHT - PADDING - SHADOW);
 }
 
 - (CGRect)getPlayerViewRect:(CGSize)viewSize
@@ -57,25 +61,23 @@ static int PADDING = 15;
     return CGRectMake(PADDING, viewSize.height - PLAYER_HEIGHT, viewSize.width - (PADDING*2), PLAYER_HEIGHT);
 }
 
+- (UIColor *)getBackgroundColor
+{
+    return [UIColor colorWithRed:48/255.0 green:48/255.0 blue:57/255.0 alpha:1.0];
+}
+
 - (void)dealloc
 {
-    [currentKey release];
-    currentKey = nil;
+    [playKey release];
+    playKey = nil;
+    
+    [playInfomation release];
+    playInfomation = nil;
     
     [playList release];
     playList = nil;
     
     [super dealloc];
 }
-
-//- (NSString *)getStatus
-//{
-//    return self.status;
-//}
-//
-//- (void)setStatus:(NSString *)newStatus
-//{
-//    self.status = newStatus;
-//}
 
 @end

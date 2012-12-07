@@ -11,17 +11,20 @@
 @interface RadioModel : NSObject
 {
     int status;
-    NSString *currentKey;
+    NSString *playKey;
+    NSString *playInfomation;
     NSMutableArray *playList;
 }
 
 @property (nonatomic, assign) int status;
-@property (nonatomic, retain) NSString *currentKey;
+@property (nonatomic, retain) NSString *playKey;
+@property (nonatomic, retain) NSString *playInfomation;
 @property (nonatomic, retain) NSMutableArray *playList;
 
 - (NSString *)getRadioURL;
 - (NSString *)getListURL;
 - (CGRect)getListViewRect:(CGSize)viewSize;
 - (CGRect)getPlayerViewRect:(CGSize)viewSize;
+- (UIColor *)getBackgroundColor;
 
 @end

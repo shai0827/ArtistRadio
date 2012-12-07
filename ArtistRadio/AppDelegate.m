@@ -15,8 +15,8 @@
 
 - (void)dealloc
 {
-    [self.utils release];
-    self.utils = nil;
+//    [self.utils release];
+//    self.utils = nil;
     
     [self.radioModel release];
     self.radioModel = nil;

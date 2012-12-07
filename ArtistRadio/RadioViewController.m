@@ -87,19 +87,26 @@
     
     [listView loadRequest:webRequest];
     
+    [self setScrollViewBackgroundColor:[self.radioModel getBackgroundColor]];
+    
 //    [listView sizeThatFits:CGSizeZero];
     
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    int widthOfWebView = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetWidth"] intValue];
-    NSLog(@"%f / %d", webView.frame.size.width, widthOfWebView);
+//    [listView.scrollView setContentSize:CGSizeMake(listView.frame.size.width, listView.frame.size.height)];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+//    NSLog(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//    [scrollView setContentOffset:CGPointMake(0, 15)];
 }
 
 - (void)setScrollViewBackgroundColor:(UIColor *)color
 {
-    for (UIView *subview in [self.view subviews]) {
+    for (UIView *subview in [listView subviews]) {
         subview.backgroundColor = color;
         for (UIView *shadowView in [subview subviews]) {
             if ([shadowView isKindOfClass:[UIImageView class]]) {
@@ -110,25 +117,52 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
     NSString *requestString = [[[request URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     
-    NSLog(@"jsvasdcript 연동 : %@", requestString);
+    NSLog(@">> %@", requestString);
     
-    if ([requestString hasPrefix:@"callplay://"]) {
-        NSString *jsData = [[[request URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-        NSString *jsString = [[jsData componentsSeparatedByString:@"callPlay://"] objectAtIndex:0];
-        NSLog(@"click : %@", jsString);
+    if ([requestString hasPrefix:@"callradio://"]) {
         
-//        UIAlertView *customeAlert = [[UIAlertView alloc] initWithTitle:@"item select" message:jsString delegate:self cancelButtonTitle:@"확인" otherButtonTitles:nil];
-//        
-//        [customeAlert show];
+        NSString *callString = [[requestString componentsSeparatedByString:@"callradio://"] objectAtIndex:1];
         
+        NSLog(@"click : %@", callString);
+        
+        NSArray *callData = [callString componentsSeparatedByString:@"#n$h$n#"];
+        
+        NSLog(@"func : %@", [callData objectAtIndex:0]);
+        NSLog(@"key : %@", [callData objectAtIndex:1]);
+        NSLog(@"title : %@", [callData objectAtIndex:2]);
+        
+        if ([callData objectAtIndex:1]){
+            self.radioModel.playKey = [callData objectAtIndex:1];
+            self.radioModel.playInfomation = [callData objectAtIndex:2];
+        }
+        
+        [self do:[callData objectAtIndex:0] key:[callData objectAtIndex:1]];
         
         return NO;
         
     }
     
     return YES;
+}
+
+- (void)do:(NSString *)func key:(NSString *)key
+{
+    NSLog(@"[ do ] %@ : %@", func, key);
+    if ([func isEqualToString:@"play"]) {
+        NSLog(@"%@ load", key);
+        //  play
+        //  현재 플레이중인 녀석 멈춤
+        if (self.radioModel.status == 3) {
+            [self pauseMusic];
+        }
+        
+        //  전달받은 키 플레이
+        [self loadMusic:key];
+        
+    }
 }
 
 
@@ -189,12 +223,15 @@
  */
 - (void)playbackStateChanged:(NSNotification *)aNotification
 {
-    NSLog(@"aNotification : %@", aNotification);
+//    NSLog(@"aNotification : %@", aNotification);
 	if ([streamer isWaiting])
 	{
-        [playerView setPlayButtonImageNamed:@"btn_play_dimmed.png"];
-        [playerView setNextButtonImageNamed:@"btn_next_dimmed.png"];
+        NSLog(@"isWating");
+        [playerView setPlayButtonImageNamed:@"btn_play.png"];
+        [playerView setNextButtonImageNamed:@"btn_next.png"];
         self.radioModel.status = 2;
+        
+        [playerView updateTitle:@"loading..."];
 	}
 	else if ([streamer isPlaying])
 	{
@@ -209,10 +246,13 @@
 	}
 	else if ([streamer isIdle])
 	{
+        NSLog(@"isIdle");
 		[self destroyStreamer];
-		[playerView setPlayButtonImageNamed:@"btn_play_dimmed.png"];
-        [playerView setNextButtonImageNamed:@"btn_next_dimmed.png"];
+		[playerView setPlayButtonImageNamed:@"btn_play.png"];
+        [playerView setNextButtonImageNamed:@"btn_next.png"];
         self.radioModel.status = 1;
+        
+        [self nextMusic];
 	}
 }
 
@@ -231,6 +271,9 @@
 		
 		if (duration > 0)
 		{
+            //  곡정보 업데이트
+            [playerView updateTitle:self.radioModel.playInfomation];
+            
             float percent = progress / duration;
 			[playerView updateProgress:percent];
 		}
@@ -245,8 +288,7 @@
 
 - (void)playerUIViewTogglePlay
 {
-    NSLog(@"click play");
-    
+    NSLog(@"click play : %d", self.radioModel.status);
     
     //  현재 재생 가능한 음원이 있는지 확인
     //  현재 재생 가능한 음원이 없다면 웹뷰를 호출하여 음원 키를 가져와야 함
@@ -260,7 +302,7 @@
             [self playStart];
             
             //  test용
-            [self loadMusic:@"A0101"];
+            
             
             break;
         case 2:
@@ -288,8 +330,8 @@
     NSLog(@"click pass");
     //  재생 중지
     [streamer pause];
-    
-    [self passMusic];
+    [playerView updateProgress:0];
+    [self nextMusic];
 }
 
 - (void)playerUIViewInfoView
@@ -308,6 +350,7 @@
  */
 -(void)loadMusic:(NSString *)key
 {
+    NSLog(@"stream 생성 : %@", key);
 	[self destroyStreamer];
     
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.mp3", [self.radioModel getRadioURL], key]];
@@ -323,6 +366,7 @@
 -(void)playMusic
 {
     [streamer start];
+    
 }
 
 /**
@@ -334,21 +378,26 @@
     [streamer pause];
 }
 
-
-- (void)passMusic
+- (void)nextMusic
 {
-    //  webview call - radio.passMusic
+    //  webview call - nativeInterface.nextItem()
+//    if (onload == YES) {
     
-}
-
-- (void)playDid
-{
-    //  webview call - radio.playDid
+    NSLog(@"%@",[NSString stringWithFormat:@"nativeInterface.nextItem('%@');", self.radioModel.playKey]);
+    
+        NSString *jsString = [NSString stringWithFormat:@"nativeInterface.nextItem('%@');", self.radioModel.playKey];
+        [listView stringByEvaluatingJavaScriptFromString:jsString];
+//    }
 }
 
 - (void)playStart
 {
+    NSLog(@"start play");
     //  webview call - radio.playStart
+//    if (onload == YES) {
+        NSString *jsString = [NSString stringWithFormat:@"nativeInterface.nextItem();"];
+        [listView stringByEvaluatingJavaScriptFromString:jsString];
+//    }
 }
 
 /**

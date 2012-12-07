@@ -32,5 +32,6 @@
 - (void)setPlayButtonImageNamed:(NSString *)imageName;
 - (void)setNextButtonImageNamed:(NSString *)imageName;
 - (void)updateProgress:(CGFloat)position;
+- (void)updateTitle:(NSString *)title;
 
 @end

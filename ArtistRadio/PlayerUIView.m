@@ -104,6 +104,11 @@ static int BUTTON_AREA_WIDTH = 128;
     [progress setFrame:CGRectMake(0, 0, updateSize, 4)];
 }
 
+- (void)updateTitle:(NSString *)title
+{
+    infoLabel.titleLabel.text = title;
+}
+
 - (void)dealloc
 {
     [self.utils release];
